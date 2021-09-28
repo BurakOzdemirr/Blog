@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Plugins css-->
+<link href="~/Ubold-v4.0/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+
+                </div>
+                <h4 class="page-title">İstatistikler</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-md-6 col-xl-3">
+            <div class="widget-rounded-circle card-box">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
+                            <i class="fe-heart font-22 avatar-title text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-right">
+                            <h3 class="mt-1"><span data-plugin="counterup">@ViewBag.totalNumberOfCategories</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Toplam Kategori</p>
+                        </div>
+                    </div>
+                </div> <!-- end row-->
+            </div> <!-- end widget-rounded-circle-->
+        </div> <!-- end col-->
+
+        
+        <div class="col-md-6 col-xl-3">
+            <div class="widget-rounded-circle card-box">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="avatar-lg rounded-circle bg-soft-info border-info border">
+                            <i class="fe-bar-chart-line- font-22 avatar-title text-info"></i>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-right">
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup">@ViewBag.totalNumberOfBlogs</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Toplam Blog</p>
+                        </div>
+                    </div>
+                </div> <!-- end row-->
+            </div> <!-- end widget-rounded-circle-->
+        </div> <!-- end col-->
+
+       
+        <div class="col-md-6 col-xl-3">
+            <div class="widget-rounded-circle card-box">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="avatar-lg rounded-circle bg-soft-info border-info border">
+                            <i class="fe-users font-22 avatar-title text-info"></i>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-right">
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup">@ViewBag.totalNumberOfAuthors</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Toplam Yazarlar</p>
+                        </div>
+                    </div>
+                </div> <!-- end row-->
+            </div> <!-- end widget-rounded-circle-->
+        </div> <!-- end col-->
+
+        <div class="col-md-6 col-xl-3">
+            <div class="widget-rounded-circle card-box">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="avatar-lg rounded-circle bg-soft-pink border-pink border">
+                            <i class="fe-message-circle font-22 avatar-title text-pink"></i>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-right">
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup">@ViewBag.totalNumberOfComments</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Toplam Yorum Sayısı</p>
+                        </div>
+                    </div>
+                </div> <!-- end row-->
+            </div> <!-- end widget-rounded-circle-->
+        </div> <!-- end col-->
+
+        <div class="col-md-6 col-xl-3">
+            <div class="widget-rounded-circle card-box">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="avatar-lg rounded-circle bg-soft-pink border-pink border">
+                            <i class="fe-package font-22 avatar-title text-pink"></i>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-right">
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup">@ViewBag.categoryNameWithTheMostTitles</span></h3>
+                            <p class="text-muted mb-1 text-truncate">En Fazla başlığa sahip kategori adı</p>
+                        </div>
+                    </div>
+                </div> <!-- end row-->
+            </div> <!-- end widget-rounded-circle-->
+        </div> <!-- end col-->
+
+        <div class="col-md-6 col-xl-3">
+            <div class="widget-rounded-circle card-box">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="avatar-lg rounded-circle bg-soft-pink border-pink border">
+                            <i class="fe-users font-22 avatar-title text-pink"></i>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-right">
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup">@ViewBag.StatusDifferent</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Kategori True olanlar ile False olanlar arasındaki fark</p>
+                        </div>
+                    </div>
+                </div> <!-- end row-->
+            </div> <!-- end widget-rounded-circle-->
+        </div> <!-- end col-->
+
+    </div>
+    
+    <!-- end row-->
+    <!-- end row -->
+    <!-- end row -->
+
+
+</div> <!-- container -->

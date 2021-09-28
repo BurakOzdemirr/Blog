@@ -1,0 +1,79 @@
+﻿@model EntityLayer.Concrete.Author
+@{
+    ViewBag.Title = "AuthorEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content">
+
+    <!-- Start Content-->
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+
+                    <h4 class="page-title">Yazarı Düzenle</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+        <!-- end row -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <form class="form-group" method="post">
+                            @Html.Label("Yazar ID")
+                            @Html.TextBoxFor(x => x.AuthorID, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Yazar Adı Soyadı")
+                            @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Resim Yolu")
+                            @Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Yazar Yetenekleri")
+                            @Html.TextBoxFor(x => x.AboutShort, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Yazar Statüsü")
+                            @Html.TextBoxFor(x => x.AuthorTitle, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Mail Adresi")
+                            @Html.TextBoxFor(x => x.AuthorMail, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Şifre")
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Telefon")
+                            @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Facebook")
+                            @Html.TextBoxFor(x => x.Facebook, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Instagram")
+                            @Html.TextBoxFor(x => x.Instagram, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Twitter")
+                            @Html.TextBoxFor(x => x.Twitter, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Linkedin")
+                            @Html.TextBoxFor(x => x.Linkedin, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("Github")
+                            @Html.TextBoxFor(x => x.Github, new { @class = "form-control" })
+                            <br />
+                            @Html.Label("İçerik")
+                            @Html.TextAreaFor(x => x.AuthorAbout, 3, 20, new { @class = "form-control" })
+                            <br />
+                            <button class="btn btn-info">Kaydet</button>
+                        </form>
+
+
+</div>
+</div>
+</div>
+</div>

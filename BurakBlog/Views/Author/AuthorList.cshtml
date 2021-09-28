@@ -1,0 +1,129 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Author>
+
+@{
+    ViewBag.Title = "AuthorList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+
+<div class="content">
+
+    <!-- Start Content-->
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+
+                    <h4 class="page-title">Yazar Listesi</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card-box">
+
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="inputPassword2" class="sr-only">Arama</label>
+                                    <input type="search" class="form-control" id="inputPassword2" placeholder="Arama...">
+                                </div>
+                                <div class="form-group mx-sm-3">
+                                    <label for="status-select" class="mr-2">Sort By</label>
+                                    <select class="custom-select" id="status-select">
+                                        <option selected="">All</option>
+                                        <option value="1">Name</option>
+                                        <option value="2">Post</option>
+                                        <option value="3">Followers</option>
+                                        <option value="4">Followings</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="text-lg-right mt-3 mt-lg-0">
+                                <a href="/Author/AddAuthor/" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-plus-circle mr-1"></i>Yeni Yazar Ekle</a>
+
+                            </div>
+                        </div><!-- end col-->
+                    </div> <!-- end row -->
+                </div> <!-- end card-box -->
+            </div><!-- end col-->
+        </div>
+        <!-- end row -->
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4">
+
+                    <div class="text-center card-box">
+                        <div class="pt-2 pb-2">
+                            <img src="@item.AuthorImage" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image">
+
+                            <h4 class="mt-3"><a href="extras-profile.html" class="text-dark">@item.AuthorName</a></h4>
+                            <p class="text-muted"> Yazar <span> | </span> <span> <a href="#" class="text-pink">@item.AuthorTitle</a> </span></p>
+
+                            <a href="/Blog/AuthorBlogList/@item.AuthorID" class="btn btn-primary btn-sm waves-effect waves-light">Yazarın Blogları</a>
+                            <a href="/Author/AuthorEdit/@item.AuthorID" class="btn btn-light btn-sm waves-effect">Profili Düzenle</a>
+                            <div class="text-left mt-3">
+                                <h4 class="font-13 text-uppercase">Hakkımda :</h4>
+                                <p class="text-muted font-13 mb-3">
+                                    @item.AboutShort
+                                </p>
+
+                                <p class="text-muted mb-2 font-13">
+                                    <strong>Telefon :</strong><span class="ml-2">
+                                        +90 @item.PhoneNumber
+                                    </span>
+                                </p>
+
+                                <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">@item.AuthorMail</span></p>
+
+
+                            </div>
+
+                            <ul class="social-list list-inline mt-3 mb-0">
+                                <li class="list-inline-item">
+                                    <a href="@item.Facebook" class="social-list-item border-primary text-primary">
+                                        <i class="mdi mdi-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="@item.Instagram" class="social-list-item border-danger text-danger">
+                                        <i class="mdi mdi-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="@item.Twitter" class="social-list-item border-info text-info">
+                                        <i class="mdi mdi-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="@item.Linkedin" class="social-list-item border-info text-info">
+                                        <i class="mdi mdi-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="@item.Github" class="social-list-item border-secondary text-secondary">
+                                        <i class="mdi mdi-github-circle"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div> <!-- end row-->
+                    </div> <!-- end .padding -->
+                </div> <!-- end card-box-->
+            }
+        </div> <!-- end col -->
+
+    </div>
+
+
+</div> <!-- container -->

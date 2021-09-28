@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+@{
+    ViewBag.Title = "GetCommentByBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Blog Yazısına Ait Yorumlar</h2>
+<br />
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <h4 class="header-title mb-4">Yorumlar</h4>
+
+            <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" id="tickets-table">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>Kullanıcı</th>
+                        <th>Mail</th>
+                        <th>Tarih</th>
+                        <th>Yorum</th>
+
+                        <th>Durum</th>
+
+
+                        <th class="hidden-sm">Araçlar</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td><b>@item.CommentID</b></td>
+                        <td>
+                            <a href="javascript: void(0);" class="text-body">
+                                <img src="../assets/images/users/user-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
+                                <span class="ml-2">@item.UserName</span>
+                            </a>
+                        </td>
+
+                        <td>
+                            @item.Mail
+                        </td>
+
+                        <td>
+                            @(((DateTime)item.CommentDate).ToString("dd-MMM-yyyy"))
+                        </td>
+
+                        <td>
+                            @item.CommentText
+                        </td>
+                        <td>
+                            <span class="badge badge-success">Open</span>
+                        </td>
+
+                        <td>
+                            <div class="btn-group dropdown">
+                                <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+
+                                    <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Sil</a>
+                                    <a class="dropdown-item" href="#"><i class="mdi mdi-star mr-2 font-18 text-muted vertical-middle"></i>Okunmadı olarak işaretle</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->

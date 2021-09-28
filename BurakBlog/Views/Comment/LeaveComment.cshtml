@@ -1,0 +1,66 @@
+﻿
+<div class="comment-form-wrap pt-5">
+    <h3 class="mb-5">Yorum Yazın</h3>
+    <form method="post" class="p-5 bg-light">
+        <div class="form-group">
+            <label for="name">Kullanıcı Adınız *</label>
+            <input type="text" class="form-control" name="UserName">
+        </div>
+        <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" class="form-control" name="Mail">
+        </div>
+        <input type="hidden" name="CommentDate" value="@DateTime.Now.ToShortDateString()" />
+        <input type="hidden" name="BlogID" value="@ViewBag.id" />
+        <div class="form-group">
+            <label for="message">Yorumunuz *</label>
+            <textarea name="CommentText" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        
+        <div class="form-group">
+            
+                <label for="message">Puanınız: </label>
+            
+            <fieldset class="rating">
+                
+                <input type="hidden" value="1">
+
+                <input type="radio" id="10star" name="rating" value="10" />
+                <label class="full" for="10star" title="Excellent">@Html.RadioButton("BlogRating", 10)10</label>
+
+                <input type="radio" id="9star" name="rating" value="9" />
+                <label class="full" for="9star" title="Excellent">@Html.RadioButton("BlogRating", 9)9</label>
+
+                <input type="radio" id="8star" name="rating" value="8" />
+                <label class="full" for="8star" title="Excellent">@Html.RadioButton("BlogRating", 8)8</label>
+
+                <input type="radio" id="7star" name="rating" value="7" />
+                <label class="full" for="7star" title="Excellent">@Html.RadioButton("BlogRating", 7)7</label>
+
+                <input type="radio" id="6star" name="rating" value="6" />
+                <label class="full" for="6star" title="Excellent">@Html.RadioButton("BlogRating", 6)6</label>
+
+                <input type="radio" id="5star" name="rating" value="5" />
+                <label class="full" for="5star" title="Excellent">@Html.RadioButton("BlogRating", 5)5</label>
+
+                <input type="radio" id="4star" name="rating" value="4" />
+                <label class="full" for="4star" title="Pretty good">@Html.RadioButton("BlogRating", 4)4</label>
+
+                <input type="radio" id="3star" name="rating" value="3" />
+                <label class="full" for="3star" title="Ok">@Html.RadioButton("BlogRating", 3)3</label>
+
+                <input type="radio" id="2star" name="rating" value="2" />
+                <label class="full" for="2star" title="Bad">@Html.RadioButton("BlogRating", 2)2</label>
+
+                <input type="radio" id="1star" name="rating" value="1" />
+                <label class="full" for="1star" title="Umm">@Html.RadioButton("BlogRating", 1)1</label>
+
+            </fieldset>
+        </div>
+       <br/>
+        <div class="form-group">
+            <input type="submit" value="Yorum Yap" class="btn btn-primary float-left" >
+        </div>
+
+    </form>
+</div>

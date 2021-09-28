@@ -1,0 +1,163 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Author>
+
+<div class="tab-pane" id="settings">
+    @using (Html.BeginForm("UpdateUserProfile", "User", FormMethod.Post))
+    {
+
+
+        foreach (var item in Model)
+        {
+    <form>
+        <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i> Kişisel Bilgiler</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="firstname">Yazar ID</label>
+                    <input type="text" class="form-control" name="AuthorID" value="@item.AuthorID">
+                </div>
+            </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="firstname">Ad Soyad</label>
+                        <input type="text" class="form-control" name="AuthorName" value="@item.AuthorName">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="lastname">Meslek</label>
+                        <input type="text" class="form-control" name="AuthorTitle" value="@item.AuthorTitle">
+                    </div>
+                </div> <!-- end col -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="lastname">Yetenekler</label>
+                        <input type="text" class="form-control" name="AboutShort" value="@item.AboutShort">
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="userbio">Hakkımda</label>
+                        <input type="text" class="form-control" naem="AuthorAbout" rows="4" value="@item.AuthorAbout">
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="useremail">Mail Adresi</label>
+                        <input type="email" class="form-control" name="AuthorMail" value="@item.AuthorMail">
+                        <span class="form-text text-muted"><small>If you want to change email please <a href="javascript: void(0);">click</a> here.</small></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="userpassword">Şifre</label>
+                        <input type="password" class="form-control" name="Password" value="@item.Password">
+                        <span class="form-text text-muted"><small>If you want to change password please <a href="javascript: void(0);">click</a> here.</small></span>
+                    </div>
+                </div> <!-- end col -->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="userpassword">Şifre Tekrar</label>
+                        <input type="password" class="form-control" id="userpassword">
+                        <span class="form-text text-muted"><small>If you want to change password please <a href="javascript: void(0);">click</a> here.</small></span>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-office-building mr-1"></i> İletişim Bilgileri</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="companyname">Telefon </label>
+                        <input type="text" class="form-control" name="PhoneNumber" value="@item.PhoneNumber">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="cwebsite">Fotoğraf</label>
+                        <input type="text" class="form-control" name="AuthorImage" value="@item.AuthorImage">
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-earth mr-1"></i> Sosyal Medya</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="social-fb">Facebook</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-facebook-square"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="Facebook" value="@item.Facebook" placeholder="Url adresinizi giriniz..">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="social-tw">Twitter</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-twitter"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="Twitter" value="@item.Twitter" placeholder="Url adresinizi giriniz..">
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="social-insta">Instagram</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-instagram"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="Instagram" value="@item.Instagram" placeholder="Url adresinizi giriniz..">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="social-lin">Linkedin</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-linkedin"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="Linkedin" value="@item.Linkedin" placeholder="Url adresinizi giriniz..">
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <div class="row">
+               
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="social-gh">Github</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-github"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="Github" value="@item.Github" placeholder="Url adresinizi giriniz..">
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <div class="text-right">
+                <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i class="mdi mdi-content-save"></i> Güncelle</button>
+            </div>
+</form>
+        }
+
+    }
+</div>

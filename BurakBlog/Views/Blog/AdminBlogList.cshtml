@@ -1,0 +1,110 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewBag.Title = "AdminBlogList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{string color = ""; }
+
+
+<div class="content">
+
+    <!-- Start Content-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <h2 class="page-title">Blog Listesi</h2>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <h4 class="header-title">Blog Listesi</h4>
+                            <p class="text-muted font-13 mb-4">
+                                Blog yazılarına ait bilgiler aşağıdaki listede görülmektedir. Buradan Blogları aktif veya pasif yapabilir ve aynı zamanda güncelleyebilirsiniz.
+                            </p>
+                            <div class="text-lg-right mt-3 mt-lg-0">
+                                <a href="/Blog/AddNewBlog/" class="btn btn-primary">Yeni Blog Ekle</a>
+                            </div>
+                            <br />
+                            <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Başlık</th>
+                                        <th>Kategori</th>
+                                        <th>Yazar</th>
+                                        <th>Tarih</th>
+                                        <th>Durum</th>
+                                        <th>Araçlar</th>
+                                        <th>Detaylar</th>
+                                        <th>Yorumlar</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+
+                                        if (item.BlogStatus == true)
+                                        {
+                                            color = "post-blog text-white bg-success";
+                                        }
+                                        if (item.BlogStatus == false)
+                                        {
+                                            color = "post-blog text-white bg-danger";
+                                        }
+                                        <tr>
+                                            <td>@item.BlogID</td>
+                                            <td>@item.BlogTitle</td>
+                                            <td>@item.Category.CategoryName</td>
+                                            <td>@item.Author.AuthorName</td>
+                                            <td>@item.BlogDate.ToShortDateString()</td>
+                                            <td> <span class="badge badge-@color">@item.BlogStatus</span></td>
+                                            <td>
+                                                <a href="/Blog/DeleteBlog/@item.BlogID" class="btn btn-danger"><i class="mdi mdi-delete-empty">Sil</i></a>
+                                                <a href="/Blog/UpdateBlog/@item.BlogID" class="btn btn-success"><i class="fe-edit-1">Güncelle</i></a>
+                                                <a href="/Blog/BlogStatusTrue/@item.BlogID" class="btn btn-success"><i class="mdi mdi-check-all">Aktif Yap</i></a>
+                                                <a href="/Blog/BlogStatusFalse/@item.BlogID" class="btn btn-danger"><i class="mdi mdi-close-circle">Pasif Yap</i></a>
+
+                                            </td>
+
+                                            <td><a href="/Blog/BlogDetails/@item.BlogID" class="btn btn-warning">Detaylar</a></td>
+                                            <td><a href="/Blog/GetCommentByBlog/@item.BlogID" class="btn btn-dark">Yorumlar</a></td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Başlık</th>
+                                        <th>Kategori</th>
+                                        <th>Yazar</th>
+                                        <th>Tarih</th>
+                                        <th>Durum</th>
+                                        <th>Araçlar</th>
+                                        <th>Detaylar</th>
+                                        <th>Yorumlar</th>
+
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+
+                        </div><!-- end card body-->
+                    </div>
+                </div> <!-- end card -->
+            </div><!-- end col-->
+        </div>
+        <!-- end row-->
+    </div>
+</div>
+

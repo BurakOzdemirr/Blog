@@ -1,0 +1,85 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+@{
+    ViewBag.Title = "AdminCommentList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="content">
+
+    <!-- Start Content-->
+    <div class="container-fluid">
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+
+                    <h4 class="page-title">Yorum Listesi</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <!-- end col-->
+
+            <div class="col-lg-12 col-xl-12">
+                <div class="card-box">
+               
+                    <ul class="nav nav-pills navtab-bg nav-justified">
+
+                        <li class="nav-item">
+                            <a href="#timeline" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                Yorumlar
+                            </a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content">
+                        <!-- end tab-pane -->
+                        <!-- end about me section content -->
+                        @foreach (var item in Model)
+                        {
+                            <div class="tab-pane show active" id="timeline">
+
+
+                                <!-- Story Box-->
+                                <div class="border border-light p-2 mb-3">
+                                    <div class="media">
+                                        <img class="mr-2 avatar-sm rounded-circle" src="/Ubold-V4.0/assets/images/teamworkcomment.png"
+                                             alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="m-0">@item.UserName </h5>
+                                            <p class="text-muted"><small>@(((DateTime)item.CommentDate).ToString("dd-MMM-yyyy")) - @item.Blogs.BlogTitle</small></p>
+                                        </div>
+                                    </div>
+                                    <p>@item.CommentText</p>
+
+                                    <div class="mt-2">
+                                        <a href="/Comment/StatusChangeToFalse/@item.CommentID" class="btn btn-sm btn-link text-muted">
+                                            <i class="mdi mdi-exit-to-app"></i> Yorumu Kaldır
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+
+                                <!-- comment box -->
+                               
+                                <!-- end comment box -->
+
+
+                            </div>
+                            <!-- end timeline content-->
+                            <!-- end settings content-->
+                        }
+                        </div> <!-- end tab-content -->
+                
+                </div> <!-- end card-box-->
+
+            </div> <!-- end col -->
+        </div>
+        <!-- end row-->
+
+    </div> <!-- container -->
+
+</div> <!-- content -->

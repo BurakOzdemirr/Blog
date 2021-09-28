@@ -1,0 +1,63 @@
+﻿@model EntityLayer.Concrete.Blog
+@{
+    ViewBag.Title = "AddNewBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@*@section Scripts{
+    <script src="~/Ubold-v4.0/assets/js/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#BlogContent'
+        });
+    </script>
+        }*@
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h4 class="page-title">Yeni Blog Ekle</h4>
+                </div>
+
+            </div> <!-- end row -->
+        </div> <!-- end card-box -->
+    </div><!-- end col-->
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form class="form-group" method="post">
+                    @Html.Label("Blog Başlığı")
+                    @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+                    <br />
+                    @Html.Label("Kategori")
+                    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
+
+                    <br />
+                    @Html.Label("Resim Yolu")
+                    @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+
+                    <br />
+                    @Html.Label("Tarih")
+                    @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control", @type = "date" })
+                    <br />
+                    @Html.Label("Yazar")
+                    @Html.DropDownListFor(x => x.AuthorID, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
+                    <br />
+                    @Html.Label("İçerik")
+                    @Html.TextAreaFor(x => x.BlogContent, 20, 20, new { @class = "form-control", id = "summernote-basic" })
+                    <br />
+                    <button class="btn btn-info">Kaydet</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

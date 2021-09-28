@@ -1,0 +1,148 @@
+﻿@model EntityLayer.Concrete.Contact
+@{
+    ViewBag.Title = "MessageDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                       
+                        <h4 class="page-title">Email Read</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+            <!-- Right Sidebar -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card-box">
+                        <!-- Left sidebar -->
+                        <div class="inbox-leftbar">
+
+                            <a href="email-compose.html" class="btn btn-danger btn-block waves-effect waves-light">Mesaj Oluştur</a>
+
+                            <div class="mail-list mt-4">
+                                <a href="/Contact/SendBox/" class="text-danger font-weight-bold"><i class="dripicons-inbox mr-2"></i>Gelen Kutusu<span class="badge badge-soft-danger float-right ml-2">2</span></a>
+                                <a href="javascript: void(0);"><i class="dripicons-star mr-2"></i>Yıldızlı</a>
+                                <a href="javascript: void(0);"><i class="dripicons-clock mr-2"></i>Ertelendi</a>
+                                <a href="javascript: void(0);"><i class="dripicons-document mr-2"></i>Taslaklar<span class="badge badge-soft-info float-right ml-2">0</span></a>
+                                <a href="/Contact/Outbox/"><i class="dripicons-exit mr-2"></i>Gönderilenler <span class="badge badge-soft-success float-right ml-2">0</span></a>
+                                <a href="javascript: void(0);"><i class="dripicons-trash mr-2"></i>Çöp Kutusu <span class="badge badge-soft-primary float-right ml-2">0</span></a>
+                                <a href="javascript: void(0);"><i class="dripicons-trash mr-2"></i>Tanıtımlar <span class="badge badge-soft-blue float-right ml-2">0</span></a>
+                                <a href="javascript: void(0);"><i class="dripicons-tag mr-2"></i>Önemli</a>
+                                <a href="javascript: void(0);"><i class="dripicons-warning mr-2"></i>Spam <span class="badge badge-soft-pink float-right ml-2">0</span></a>
+                            </div>
+
+                            <h6 class="mt-4">Labels</h6>
+
+                            <div class="list-group b-0 mail-list">
+                                <a href="#" class="list-group-item border-0"><span class="mdi mdi-circle text-info mr-2"></span>Web App</a>
+                                <a href="#" class="list-group-item border-0"><span class="mdi mdi-circle text-warning mr-2"></span>Recharge</a>
+                                <a href="#" class="list-group-item border-0"><span class="mdi mdi-circle text-dark mr-2"></span>Wallet Balance</a>
+                                <a href="#" class="list-group-item border-0"><span class="mdi mdi-circle text-primary mr-2"></span>Friends</a>
+                                <a href="#" class="list-group-item border-0"><span class="mdi mdi-circle text-success mr-2"></span>Family</a>
+                            </div>
+
+                        </div>
+                        <!-- End Left sidebar -->
+
+                        <div class="inbox-rightbar">
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-light waves-effect"><i class="mdi mdi-archive font-18"></i></button>
+                                <button type="button" class="btn btn-sm btn-light waves-effect"><i class="mdi mdi-alert-octagon font-18"></i></button>
+                                <button type="button" class="btn btn-sm btn-light waves-effect"><i class="mdi mdi-delete-variant font-18"></i></button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-light dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-folder font-18"></i>
+                                    <i class="mdi mdi-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <span class="dropdown-header">Move to</span>
+                                    <a class="dropdown-item" href="javascript: void(0);">Social</a>
+                                    <a class="dropdown-item" href="javascript: void(0);">Promotions</a>
+                                    <a class="dropdown-item" href="javascript: void(0);">Updates</a>
+                                    <a class="dropdown-item" href="javascript: void(0);">Forums</a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-light dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-label font-18"></i>
+                                    <i class="mdi mdi-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <span class="dropdown-header">Label as:</span>
+                                    <a class="dropdown-item" href="javascript: void(0);">Updates</a>
+                                    <a class="dropdown-item" href="javascript: void(0);">Social</a>
+                                    <a class="dropdown-item" href="javascript: void(0);">Promotions</a>
+                                    <a class="dropdown-item" href="javascript: void(0);">Forums</a>
+                                </div>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-light dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-dots-horizontal font-18"></i> Daha
+                                    <i class="mdi mdi-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <span class="dropdown-header">Daha Fazla Seçenek :</span>
+                                    <a class="dropdown-item" href="javascript: void(0);">Okunmadı Olarak İşaretle</a>
+                                    <a class="dropdown-item" href="javascript: void(0);">Görevlere Ekle</a>
+                                    <a class="dropdown-item" href="javascript: void(0);">Yıldız Ekle</a>
+                                    <a class="dropdown-item" href="javascript: void(0);">Sessize Al</a>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <h5 class="font-18">@Model.Subject</h5>
+
+                                <hr />
+
+                                <div class="media mb-3 mt-1">
+                         
+                                    <div class="media-body">
+                                        <small class="float-right">@(((DateTime)Model.MessageDate).ToString("dd-MMM-yyyy"))</small>
+                                        <h6 class="m-0 font-14">Gönderen: @Html.DisplayFor(x=>x.Name) @Html.DisplayFor(x=>x.SurName)</h6>
+                                        <small class="text-muted">Mail Adresi: @Html.DisplayFor(x=>x.Mail)</small>
+                                    </div>
+                                </div>
+
+                                <p>@Model.Message</p>
+                               
+                                <hr />
+
+                                <!-- end row-->
+
+                                <div class="mt-5">
+                                    <a href="#" class="btn btn-secondary mr-2"><i class="mdi mdi-reply mr-1"></i> Yanıtla</a>
+                                    <a href="#" class="btn btn-light">Forward <i class="mdi mdi-forward ml-1"></i></a>
+                                    <a href="#" class="btn btn-light">Sil <i class="mdi mdi-trash-can ml-1"></i></a>
+                                    <a href="#" class="btn btn-light">Yazdır <i class="mdi mdi-printer ml-1"></i></a>
+                                </div>
+
+                            </div>
+                            <!-- end .mt-4 -->
+
+                        </div>
+                        <!-- end inbox-rightbar-->
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div> <!-- end Col -->
+
+            </div><!-- End row -->
+
+
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+

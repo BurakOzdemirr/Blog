@@ -1,0 +1,111 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+@{
+    ViewBag.Title = "UpdateAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        
+                        <h4 class="page-title">Hakkımızda Yazısı İçerik Düzenleme</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+              
+                    <!-- end card-box -->
+
+                    <!-- end card-box-->
+                 <!-- end col-->
+
+                <div class="col-lg-12 col-xl-12">
+                    <div class="card-box">
+                        <ul class="nav nav-pills navtab-bg nav-justified">
+                            
+                            <li class="nav-item">
+                                <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    Hakkımızda Yazısını Düzenle
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                             <!-- end tab-pane -->
+                            <!-- end about me section content -->
+
+                          
+                            <!-- end timeline content-->
+                        @using (Html.BeginForm("UpdateAbout","About",FormMethod.Post))
+                        {
+                            <div class="tab-pane" id="settings">
+                                @foreach (var item in Model)
+                                {
+                                <form>
+                                    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i> Bizim Hakkımızda</h5>
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="firstname">ID</label>
+                                                <input type="text" class="form-control" name="AboutID" value="@item.AboutID">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="firstname">Görsel 1</label>
+                                                <input type="text" class="form-control" name="AboutImage1" value="@item.AboutImage1">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="firstname">Görsel 2</label>
+                                                <input type="text" class="form-control" name="AboutImage2" value="@item.AboutImage2">
+                                            </div>
+                                        </div>
+                                        <!-- end col -->
+                                    </div> <!-- end row -->
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="userbio">Hakkımızda Açıklama 1</label>
+                                                <textarea class="form-control" name="AboutContent" rows="4" placeholder="Write something...">@item.AboutContent</textarea>
+                                            </div>
+                                        </div> 
+    
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="userbio">Hakkımızda Açıklama 2</label>
+                                                <textarea class="form-control" name="AboutContent2" rows="4" placeholder="Write something...">@item.AboutContent2</textarea>
+                                            </div>
+                                        </div><!-- end col -->
+                                    </div> <!-- end row -->
+
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i class="mdi mdi-content-save"></i> Save</button>
+                                    </div>
+                                </form>
+                                }
+                            </div>
+                            <!-- end settings content-->
+                        }
+                        </div> <!-- end tab-content -->
+                    </div> <!-- end card-box-->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row-->
+
+        </div> <!-- container -->
+
+    </div> <!-- content -->

@@ -1,0 +1,123 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+@{
+    ViewBag.Title = "AuthorBlogList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{string color = ""; }
+@{string casename = ""; }
+
+<div class="content">
+
+    <!-- Start Content-->
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+
+                    <h4 class="page-title">Blog Listem</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+        <!-- end row -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card-box">
+                    <a href="/Blog/AddNewBlog/" class="btn btn-sm btn-primary waves-effect waves-light float-right">
+                        <i class="mdi mdi-plus-circle"></i> Yeni Blog Ekle
+                    </a>
+                    <h4 class="header-title mb-4">Bloglarım</h4>
+
+                    <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" id="tickets-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>Blog Başlığı</th>
+                                <th>Blog Değerlendirme Oranı</th>
+                                <th>Durum</th>
+                                <th>Araçlar</th>
+                                <th class="hidden-sm">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+
+                                if (item.BlogRating >= 85)
+                                {
+                                    color = "post-category text-white bg-success mb-3";
+                                    casename = "Çok iyi";
+                                }
+                                if (item.BlogRating >= 70 && item.BlogRating <= 84)
+                                {
+                                    color = "post-category text-white bg-info mb-3";
+                                    casename = "Başarılı";
+                                }
+                                if (item.BlogRating >= 50 && item.BlogRating <= 69)
+                                {
+                                    color = "post-category text-white bg-warning mb-3";
+                                    casename = "Orta";
+                                }
+                                if (item.BlogRating >= 0 && item.BlogRating <= 49)
+                                {
+                                    color = "post-category text-white bg-danger mb-3";
+                                    casename = "Kötü";
+                                }
+
+                                <tr>
+                                    <td><b>@item.BlogID</b></td>
+                                    <td>
+                                        @item.BlogTitle
+                                    </td>
+
+                                    <td>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: @item.BlogRating%" aria-valuenow="@item.BlogRating" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <small> Aldığı Puan: @item.BlogRating</small>
+                                    </td>
+
+                                    <td>
+                                        <span class="badge badge-@color">@casename</span>
+                                    </td>
+
+                                    <td>
+
+                                        <a class="btn btn-success btn-sm" href="/Blog/UpdateBlog/@item.BlogID"><i class="fe-edit"></i>Düzenle</a>
+                                        <a class="btn btn-danger btn-sm" href="#"><i class="fe-trash-2"></i>Sil</a>
+                                    </td>
+
+                                    <td>
+                                        <div class="btn-group dropdown">
+                                            <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="/Blog/AddNewBlog/"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Yeni Blog Ekle</a>
+                                                <a class="dropdown-item" href="#"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Kategori Düzenle</a>
+                                                <a class="dropdown-item" href="#"><i class="mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"></i>Close</a>
+                                                <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Sil</a>
+                                                <a class="dropdown-item" href="#"><i class="mdi mdi-star mr-2 font-18 text-muted vertical-middle"></i>Mark as Unread</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- end col -->
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container -->
+
+</div> <!-- content -->

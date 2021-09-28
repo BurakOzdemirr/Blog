@@ -1,0 +1,151 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Category>
+@{
+    ViewBag.Title = "AdminCategoryList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{string color = ""; }
+
+
+<div class="content">
+
+    <!-- Start Content-->
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+
+                    <h4 class="page-title">Kategori Listesi</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+        <!-- end row -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card-box">
+                    <button type="button" class="btn btn-primary waves-effect waves-light float-right" data-toggle="modal" data-target="#Modal1">
+                        <i class="mdi mdi-plus-circle"></i> Yeni Kategori Ekle
+                    </button>
+                    <div class="modal" id="Modal1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title">Yeni Kategori Ekleme Paneli</h2>
+
+
+                                </div>
+                                <form method="post" action="/Category/AdminCategoryAdd/">
+                                    <div class="modal-body">
+                                        <label>Kategori Adı</label>
+                                        <input type="text" name="CategoryName" class="form-control" />
+                                        <br />
+                                        <label>Kategori Açıklaması</label>
+                                        <input type="text" name="CategoryDescription" class="form-control" />
+                                        <br />
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Kapat</button>
+                                            <button type="button" class="btn btn-info waves-effect waves-light">Ekle</button>
+                                           
+                                        </div>
+
+                                    </div>
+     
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="header-title mb-4">Kategoriler</h4>
+
+                    <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" id="tickets-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>Kategori Adı</th>
+                                <th>Son Blog Yazarı</th>
+                                <th>Kategori Bar</th>
+                                <th>Durum</th>
+                                <th>Araçlar</th>
+                                <th class="hidden-sm">Eylemler</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+
+                                if (item.CategoryStatus == true)
+                                {
+                                    color = "post-category text-white bg-success";
+                                }
+                                if (item.CategoryStatus == false)
+                                {
+                                    color = "post-category text-white bg-danger";
+                                }
+                                <tr>
+                                    <td><b>@item.CategoryID</b></td>
+                                    <td>
+                                        @item.CategoryName
+                                    </td>
+
+                                    <td>
+                                        <a href="javascript: void(0);">
+                                            <img src="/Ubold-v4.0/assets/images/users/user-9.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
+                                            <img src="/Ubold-v4.0/assets/images/users/user-9.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
+
+                                        </a>
+                                    </td>
+
+                                    <td>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <small>%50 Tamamlandı</small>
+                                    </td>
+
+                                    <td>
+                                        <span class="badge badge-@color">@item.CategoryStatus</span>
+                                    </td>
+
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="/Blog/BlogByCategory/@item.CategoryID"><i class="fe-airplay"></i>Yazılar</a>
+                                        <a class="btn btn-success btn-sm" href="/Category/CategoryEdit/@item.CategoryID"><i class="fe-edit"></i>Düzenle</a>
+                                        <a class="btn btn-danger btn-sm" href="/Category/CategoryStatusFalse/@item.CategoryID"><i class="fe-trash-2"></i>Pasif Yap</a>
+                                        <a class="btn btn-success btn-sm" href="/Category/CategoryStatusTrue/@item.CategoryID"><i class="fe-check"></i>Aktif Yap</a>
+
+                                    </td>
+
+                                    <td>
+                                        <div class="btn-group dropdown">
+                                            <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="/Category/CategoryEdit/@item.CategoryID"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Kategori Düzenle</a>
+                                                <a class="dropdown-item" href="/Category/CategoryStatusTrue/@item.CategoryID"><i class="mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"></i>Aktif Yap</a>
+                                                <a class="dropdown-item" href="/Category/CategoryStatusFalse/@item.CategoryID"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Pasif Yap</a>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div><!-- end col -->
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container -->
+
+</div> <!-- content -->
