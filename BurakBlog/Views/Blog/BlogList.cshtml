@@ -54,7 +54,7 @@
                     <div class="entry2">
                         <a href="/Blog/BlogDetails/@x.BlogID"><img src="@x.BlogImage" style="height:250px"alt="Image" class="img-fluid rounded"></a>
                         <div class="excerpt">
-                            <span class="@color">@x.Category.CategoryName</span>
+                            <a href="/Blog/BlogByCategory/@x.CategoryID"> <span class="@color">@x.Category.CategoryName</span></a>
 
                             <h2><a href="/Blog/BlogDetails/@x.BlogID">@x.BlogTitle</a></h2>
                             <div class="post-meta align-items-center text-left clearfix">
@@ -64,7 +64,8 @@
                                 Puan: @x.BlogRating
                             </div>
 
-                            <p>@Html.Raw(x.BlogContent.Substring(0,x.BlogContent.Substring(0,200).LastIndexOf(" ")))...</p>
+                            <p>@x.BlogContent.Substring(0, x.BlogContent.Substring(0, 200).LastIndexOf(" "))...</p>
+                           
                             <p><a href="/Blog/BlogDetails/@x.BlogID">Devamını Oku</a></p>
                         </div>
                     </div>

@@ -1,5 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +14,7 @@ namespace BurakBlog.Controllers
     public class CommentController : Controller
     {
         // GET: Comment
-        CommentManager cm = new CommentManager();
+        CommentManager cm = new CommentManager(new EfCommentDal());
 
         [AllowAnonymous]
         public PartialViewResult CommentList(int id)
@@ -32,8 +35,29 @@ namespace BurakBlog.Controllers
         [HttpPost]
         public PartialViewResult LeaveComment(Comment c)
         {
+
+         //   CommentValidator commentValidator = new CommentValidator();
+         //   ValidationResult results = commentValidator.Validate(c);
+         //   if (results.IsValid)
+         //   {
+         //       c.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+           //     c.CommentStatus = true;
+           //     cm.TAdd(c);
+          //      return PartialView();
+       //     }
+         //   else
+        //    {
+          //      foreach (var item in results.Errors)
+         //       {
+                //    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+         //       }
+         //   }
+        //    return PartialView();
+
+
+
             c.CommentStatus = true;
-            cm.CommentAdd(c);
+            cm.TAdd(c);
             return PartialView();
         }
         public ActionResult AdminCommentListTrue()

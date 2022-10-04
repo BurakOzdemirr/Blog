@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace BurakBlog.Controllers
     {
         // GET: User
         UserProfileManager userProfile = new UserProfileManager();
-        BlogManager bm = new BlogManager();
+        BlogManager bm = new BlogManager(new EfBlogDal());
         public ActionResult Index()
         {
             
@@ -47,7 +48,7 @@ namespace BurakBlog.Controllers
         [HttpGet]
         public ActionResult UpdateBlog(int id)
         {
-            Blog blog = bm.FindBlog(id);
+            Blog blog = bm.GetByID(id);
             Context c = new Context();
             List<SelectListItem> values = (from x in c.Categories.ToList()
                                            select new SelectListItem
@@ -69,12 +70,12 @@ namespace BurakBlog.Controllers
         [HttpPost]
         public ActionResult UpdateBlog(Blog p)
         {
-            bm.UpdateBlog(p);
+            bm.TUpdate(p);
             return RedirectToAction("BlogList");
         }
         public ActionResult GetCommentByBlog(int id)
         {
-            CommentManager cm = new CommentManager();
+            CommentManager cm = new CommentManager(new EfCommentDal());
             var commentlist = cm.CommentByBlog(id);
             return View(commentlist);
         }
@@ -104,7 +105,7 @@ namespace BurakBlog.Controllers
         [HttpPost]
         public ActionResult AddNewBlog(Blog b)
         {
-            bm.BlogAddBL(b);
+            bm.TAdd(b);
             return RedirectToAction("BlogList");
         }
 

@@ -1,5 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +14,8 @@ namespace BurakBlog.Controllers
     public class AuthorController : Controller
     {
         // GET: Author
-        BlogManager blogmanager = new BlogManager();
-        AuthorManager authormanager = new AuthorManager();
+        BlogManager blogmanager = new BlogManager(new EfBlogDal() );
+        AuthorManager authormanager = new AuthorManager(new EfAuthorDal());
         
         [AllowAnonymous]
         public PartialViewResult AuthorAbout(int id)
@@ -24,7 +27,7 @@ namespace BurakBlog.Controllers
         [AllowAnonymous]
         public PartialViewResult AuthorPopularPost(int id)
         {
-            var blogauthorid = blogmanager.GetAll().Where(x => x.BlogID == id).Select(y => y.AuthorID).FirstOrDefault();
+            var blogauthorid = blogmanager.GetList().Where(x => x.BlogID == id).Select(y => y.AuthorID).FirstOrDefault();
            
             var authorblogs = blogmanager.GetBlogByAuthor(blogauthorid);
             return PartialView(authorblogs);
@@ -33,7 +36,7 @@ namespace BurakBlog.Controllers
 
         public ActionResult AuthorList()
         {
-           var authorlists = authormanager.GetAll();
+           var authorlists = authormanager.GetList();
             return View(authorlists);
         }
         [HttpGet]
@@ -44,21 +47,53 @@ namespace BurakBlog.Controllers
         [HttpPost]
         public ActionResult AddAuthor(Author p)
         {
-            authormanager.AddAuthorBL(p);
-            return RedirectToAction("AuthorList");
+            AuthorValidator authorValidator = new AuthorValidator();
+            ValidationResult results = authorValidator.Validate(p);
+            if (results.IsValid)
+            {
+                authormanager.TAdd(p);
+                return RedirectToAction("AuthorList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+
+           
         }
         [HttpGet]
         public ActionResult AuthorEdit(int id)
         {
-            Author author = authormanager.FindAuthor(id);
+            Author author = authormanager.GetByID(id);
 
             return View(author);
         }
         [HttpPost]
         public ActionResult AuthorEdit(Author p)
         {
-            authormanager.EditAuthor(p);
-            return RedirectToAction("AuthorList");
+            AuthorValidator authorValidator = new AuthorValidator();
+            ValidationResult results = authorValidator.Validate(p);
+            if (results.IsValid)
+            {
+                authormanager.TUpdate(p);
+                return RedirectToAction("AuthorList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+
+
+
+           
         }
 
        

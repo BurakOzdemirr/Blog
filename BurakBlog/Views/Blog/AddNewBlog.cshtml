@@ -14,7 +14,10 @@
         });
     </script>
         }*@
-
+<script src="~/Scripts/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({ selector: 'textarea' });
+</script>
 
 <div class="row">
     <div class="col-12">
@@ -52,7 +55,7 @@
                     @Html.DropDownListFor(x => x.AuthorID, (List<SelectListItem>)ViewBag.values2, new { @class = "form-control" })
                     <br />
                     @Html.Label("İçerik")
-                    @Html.TextAreaFor(x => x.BlogContent, 20, 20, new { @class = "form-control", id = "summernote-basic" })
+                    @Html.TextAreaFor(x => x.BlogContent, 100, 100, new { @class = "form-control" })
                     <br />
                     <button class="btn btn-info">Kaydet</button>
                 </form>

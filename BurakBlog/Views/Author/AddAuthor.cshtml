@@ -12,45 +12,58 @@
                 <form class="form-group" method="post">
                     @Html.Label("Yazar Adı Soyadı")
                     @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.AuthorName)
                     <br />
 
                     <br />
                     @Html.Label("Resim Yolu")
                     @Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.AuthorImage)
 
                     <br />
                     @Html.Label("Yazar Yetenekleri")
                     @Html.TextBoxFor(x => x.AboutShort, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.AboutShort)
                     <br />
                     @Html.Label("Yazar Statüsü")
                     @Html.TextBoxFor(x => x.AuthorTitle, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.AuthorTitle)
                     <br />
                     @Html.Label("Mail Adresi")
                     @Html.TextBoxFor(x => x.AuthorMail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.AuthorMail)
                     <br />
                     @Html.Label("Şifre")
                     @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Password)
                     <br />
                     @Html.Label("Telefon")
                     @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.PhoneNumber)
                     <br />
                     @Html.Label("Facebook")
                     @Html.TextBoxFor(x => x.Facebook, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Facebook)
                     <br />
                     @Html.Label("Instagram")
                     @Html.TextBoxFor(x => x.Instagram, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Instagram)
                     <br />
                     @Html.Label("Twitter")
                     @Html.TextBoxFor(x => x.Twitter, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Twitter)
                     <br />
                     @Html.Label("Linkedin")
                     @Html.TextBoxFor(x => x.Linkedin, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Linkedin)
                     <br />
                     @Html.Label("Github")
                     @Html.TextBoxFor(x => x.Github, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Github)
                     <br />
                     @Html.Label("İçerik")
                     @Html.TextAreaFor(x => x.AuthorAbout, 3, 20, new { @class = "form-control" })
+                    
                     <br />
                     <button class="btn btn-info">Kaydet</button>
                 </form>
